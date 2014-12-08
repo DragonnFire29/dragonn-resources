@@ -27,7 +27,6 @@ public class GVars
 
 	public static void toggleDebugVisible()
 	{
-		//TODO: Finish Debug Visibility Toggle
 		if(debugVisible)
 		{
 			debugVisible = false;

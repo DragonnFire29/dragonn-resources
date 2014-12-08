@@ -16,6 +16,8 @@ public class Debug
 	public static boolean	dbgBuilt;
 	static Sprite			dbgImg;
 	static Sprite			dbgAnim;
+	
+	public static DBGCUSTOM custDebugInfo = new DBGCUSTOM();
 
 	static void build()
 	{
@@ -85,9 +87,12 @@ public class Debug
 		g.drawString("L: (" + GVars.lastScreenX + "," + GVars.lastScreenY + ")",
 				GVars.lastScreenX, GVars.lastScreenY);
 
+		//Custom
+		custDebugInfo.draw(g);
+		
 		// TODO: Remove this when
 		// something starts using input
-		InKeyListener.removeFirstEvent();
+		//InKeyListener.removeFirstEvent();
 	}
 
 	public static void drawInputDebugInfo(Graphics g)

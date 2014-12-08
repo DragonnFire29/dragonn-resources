@@ -12,6 +12,19 @@ public class InputObj
 	private String	keyString;
 	private int		modNo;
 	private String	modString;
+	
+	public static final int TYPE_KEY_TYPED = 400;
+	public static final int TYPE_KEY_PRESSED = 401;
+	public static final int TYPE_KEY_RELEASED = 402;
+	
+	public static final int TYPE_MOUSE_CLICKED = 500;
+	public static final int TYPE_MOUSE_PRESSED = 501;
+	public static final int TYPE_MOUSE_RELEASED = 502;
+	public static final int TYPE_MOUSE_MOVED = 503;
+	public static final int TYPE_MOUSE_ENTERED = 504;
+	public static final int TYPE_MOUSE_EXITED = 505;
+	public static final int TYPE_MOUSE_DRAGGED = 506;
+	public static final int TYPE_MOUSE_WHEEL = 507;
 
 	public InputObj()
 	{
@@ -56,5 +69,15 @@ public class InputObj
 	public int getY()
 	{
 		return screenY;
+	}
+
+	public int getKeyNo()
+	{
+		return keyNo;
+	}
+
+	public String getKeyString()
+	{
+		return keyString;
 	}
 }

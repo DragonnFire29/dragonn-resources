@@ -101,7 +101,7 @@ public class InKeyListener implements AWTEventListener
     	else if(evID == 506)
     	{
     		//TODO: Make this mouse drag specific.
-    		//506 == MOUSE_WHEEL
+    		//506 == MOUSE_DRAG
     		MouseEvent mEvent = (MouseEvent)event;
 
     		input = new InputObj(evID, "MOUSEDRAG", mEvent.getX(), mEvent.getY() - 23, mEvent.getButton(), "MOUSE" + mEvent.getButton(), mEvent.getModifiers(), MouseEvent.getMouseModifiersText(mEvent.getModifiers()));
@@ -123,6 +123,8 @@ public class InKeyListener implements AWTEventListener
         		System.out.println("                    STRING: " + evString);
         	}
     	}
+
+    	//System.out.println("[INP] NEW INPUT: KEYNO=" + input.getKeyNo() + " KEYSTRING=" + input.getKeyString());
 
     	addEvent(input);
     }
