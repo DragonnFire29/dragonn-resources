@@ -21,8 +21,8 @@ public class Debug
 
 	static void build()
 	{
-		dbgImg = new Sprite("dbg/res/dbgIcon.png");
-		dbgAnim = new Sprite("dbg/res/dbgAnim.png", 128, 128, 48);
+		dbgImg = new Sprite("system/dbg/dbgIcon.png");
+		dbgAnim = new Sprite("system/dbg/dbgAnim.png", 128, 128, 48);
 	}
 
 	public static void drawDebugInfo(Graphics g)

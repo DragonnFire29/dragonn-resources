@@ -6,13 +6,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 import dragonn.resources.GVars;
-import dragonn.resources.misc.DProperties;
 
 public class InKeyListener implements AWTEventListener
 {
 	public static InputObj[] inputList = {new InputObj(), new InputObj(), new InputObj(), new InputObj(), new InputObj()};
-
-	public static DProperties propertyParser = new DProperties(',', ',', '=', '/');
 
 	public static void addEvent(InputObj newEvent) throws ArrayIndexOutOfBoundsException
 	{

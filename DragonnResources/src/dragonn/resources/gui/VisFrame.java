@@ -14,10 +14,6 @@ public class VisFrame extends JFrame
 		setVisible(true);
 		add(comp);
 		setTitle(GVars.windowTitle);
-		if(GVars.debugEnabled)
-		{
-			setTitle("--==DBG==-- " + getTitle());
-		}
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

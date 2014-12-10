@@ -5,15 +5,36 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 import dragonn.resources.GVars;
+import dragonn.resources.gui.components.DComp;
 
 @SuppressWarnings("serial")
 public class VisPanel extends JPanel
 {
-	public static Color BGC = Color.white;
+	public Color BGC = Color.white;
+	public DComp baseComponent;
 
 	public VisPanel()
 	{
 		this.setFocusTraversalKeysEnabled(true);
+	}
+
+	public VisPanel(DComp component)
+	{
+		this.setFocusTraversalKeysEnabled(true);
+		baseComponent = component;
+	}
+
+	public VisPanel(Color BGColor)
+	{
+		this.setFocusTraversalKeysEnabled(true);
+		BGC = BGColor;
+	}
+
+	public VisPanel(DComp component, Color BGColor)
+	{
+		this.setFocusTraversalKeysEnabled(true);
+		baseComponent = component;
+		BGC = BGColor;
 	}
 
 	public void paint(Graphics g)
@@ -25,5 +46,25 @@ public class VisPanel extends JPanel
 		{
 			Debug.drawDebugInfo(g);
 		}
+	}
+
+	public DComp getComponent()
+	{
+		return baseComponent;
+	}
+
+	public void setComponent(DComp component)
+	{
+		baseComponent = component;
+	}
+
+	public Color getBGColor()
+	{
+		return BGC;
+	}
+
+	public void setBGColor(Color newBGC)
+	{
+		BGC = newBGC;
 	}
 }

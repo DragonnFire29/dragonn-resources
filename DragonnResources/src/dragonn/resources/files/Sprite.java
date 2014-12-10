@@ -57,7 +57,7 @@ public class Sprite
 			System.out.println("COULD NOT FIND TEXTURE " + imgPath);
 			try
 			{
-				spriteBImg = ImageIO.read(new File("dbg/res/missingtex.png"));
+				spriteBImg = ImageIO.read(new File("system/missingtex.png"));
 			} catch (IOException ex)
 			{
 				System.out.println("MISSING TEXTURE NOT FOUND: TERMINATING");
