@@ -16,6 +16,14 @@ public class LogicThread implements Runnable
 		do
 		{
 			startingLogicBlock.run();
+			try
+			{
+				Thread.sleep(10);
+			}
+			catch(Exception e)
+			{
+				System.out.println("LOGIC INTERRUPTED");
+			}
 			LogicLoopCounter.tick();
 		}
 		while(GVars.gameRunning);

@@ -7,37 +7,38 @@ import dragonn.resources.input.InputObj;
 
 public class DComp
 {
-	//Component info
-	private int compLocX;
-	private int compLocY;
-	private int compBoundsX;
-	private int compBoundsY;
+	// Component info
+	protected int			compLocX;
+	protected int			compLocY;
+	protected int			compBoundsX;
+	protected int			compBoundsY;
 
-	//Mouse info
-	private boolean		compIsClickable;
-	private int			compMouseX;
-	private int			compMouseY;
-	private boolean		compMousePresent;
-	private int			compMouseButtonClicked;
+	// Mouse info
+	protected boolean		compIsClickable;
+	protected int			compMouseX;
+	protected int			compMouseY;
+	protected boolean		compMousePresent;
+	protected int			compMouseButtonClicked;
 
-	//Text info
-	private boolean		compHasText;
-	private String		compText;
+	// Text info
+	protected boolean		compHasText;
+	protected String		compText;
 
-	//Interaction info
-	public static final int BLOCK_ALL = 0;
-	public static final int BLOCK_MOUSE = 1;
-	public static final int BLOCK_KEY = 2;
-	public static final int BLOCK_NONE = 4;
-	private int interactionBlocking;
+	// Interaction info
+	public static final int	BLOCK_ALL	= 0;
+	public static final int	BLOCK_MOUSE	= 1;
+	public static final int	BLOCK_KEY	= 2;
+	public static final int	BLOCK_NONE	= 4;
+	protected int			interactionBlocking;
 
 	public DComp()
 	{
-		//TODO: Write in the defaults
+		// TODO: Write in the defaults
 	}
 
-	public DComp(boolean compIsClickable, boolean compHasText, int interactionBlocking,
-			int compLocX, int compLocY, int compBoundsX, int compBoundsY)
+	public DComp(boolean compIsClickable, boolean compHasText,
+			int interactionBlocking, int compLocX, int compLocY,
+			int compBoundsX, int compBoundsY)
 	{
 		this.compIsClickable = compIsClickable;
 		this.compHasText = compHasText;
@@ -46,20 +47,24 @@ public class DComp
 
 	public BufferedImage paint()
 	{
-		BufferedImage bImage = new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR);
+		BufferedImage bImage =
+				new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR);
 
 		return bImage;
 	}
 
-	//Mouse Methods
-	public void mouseUpdate(int mouseScreenX, int mouseScreenY, int mouseButtonClicked)
+	// Mouse Methods
+	public void mouseUpdate(int mouseScreenX, int mouseScreenY,
+			int mouseButtonClicked)
 	{
-		if(this.compLocX < mouseScreenX && mouseScreenX > this.compBoundsX + this.compLocX &&
-				this.compLocY < mouseScreenY && mouseScreenY > this.compBoundsY + this.compLocX)
+		if (this.compLocX < mouseScreenX
+				&& mouseScreenX > this.compBoundsX + this.compLocX
+				&& this.compLocY < mouseScreenY
+				&& mouseScreenY > this.compBoundsY + this.compLocX)
 		{
 			this.compMouseX = mouseScreenX - this.compLocX;
 			this.compMouseY = mouseScreenY - this.compLocY;
-			if(this.compIsClickable)
+			if (this.compIsClickable)
 			{
 				this.compMouseButtonClicked = mouseButtonClicked;
 			}
@@ -84,7 +89,7 @@ public class DComp
 
 	public int getMouseXR()
 	{
-		if(this.isClickable() && this.compMousePresent)
+		if (this.isClickable() && this.compMousePresent)
 		{
 			return this.compMouseX;
 		}
@@ -94,11 +99,22 @@ public class DComp
 
 	public int getMouseYR()
 	{
-		if(this.isClickable() && this.compMousePresent)
+		if (this.isClickable() && this.compMousePresent)
 		{
 			return this.compMouseY;
 		}
 
 		return -1;
+	}
+
+	//Misc getters
+	public int getComponentX()
+	{
+		return compLocX;
+	}
+
+	public int getComponentY()
+	{
+		return compLocY;
 	}
 }

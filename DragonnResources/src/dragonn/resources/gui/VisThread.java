@@ -15,16 +15,16 @@ public class VisThread implements Runnable
 		System.out.println("Starting VisThread (VIS) " + this.toString());
 		do
 		{
-			vp.repaint();
-			VisualLoopCounter.tick();
 			try
 			{
-				Thread.sleep(50);
+				Thread.sleep(10);
 			}
-			catch (InterruptedException e)
+			catch(Exception e)
 			{
-				System.out.println("[VIS] INTERRUPTED MID-LOOP SLEEP");
+				System.out.println("VISUAL INTERRUPTED");
 			}
+			vp.repaint();
+			VisualLoopCounter.tick();
 		}
 		while(GVars.gameRunning == true);
 
