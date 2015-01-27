@@ -17,7 +17,6 @@ public class VisThread implements Runnable
 		{
 			vp.repaint();
 			VisualLoopCounter.tick();
-			/*
 			try
 			{
 				Thread.sleep(50);
@@ -26,11 +25,10 @@ public class VisThread implements Runnable
 			{
 				System.out.println("[VIS] INTERRUPTED MID-LOOP SLEEP");
 			}
-			*/
 		}
 		while(GVars.gameRunning == true);
 
-		System.out.println("LOGIC " + this.toString() + "TERMINATED");
+		System.out.println("VISUAL " + this.toString() + "TERMINATED");
 	}
 
 }

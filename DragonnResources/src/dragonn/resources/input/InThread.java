@@ -22,12 +22,5 @@ public class InThread
 		{
 			InKeyListener.inputList[0] = new InputObj();
 		}
-		/*
-		do
-		{
-			InputLoopCounter.tick();
-		}
-		while(GVars.gameRunning);
-		*/
 	}
 }
