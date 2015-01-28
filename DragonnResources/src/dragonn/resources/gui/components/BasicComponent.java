@@ -5,27 +5,31 @@ import java.awt.image.BufferedImage;
 
 public class BasicComponent extends DComp
 {
-	public BasicComponent(int coordX, int coordY)
+	Color color;
+
+	public BasicComponent(int coordX, int coordY, Color partColor)
 	{
-		super.compIsClickable = true;
-		super.interactionBlocking = DComp.BLOCK_ALL;
-		super.compLocX = coordX;
-		super.compLocY = coordY;
-		super.compBoundsX = 100;
-		super.compBoundsY = 100;
+		compIsClickable = true;
+		interactionBlocking = DComp.BLOCK_ALL;
+		compLocX = coordX;
+		compLocY = coordY;
+		compBoundsX = 100;
+		compBoundsY = 100;
+
+		color = partColor;
 	}
 
 	@Override
 	public BufferedImage paint()
 	{
 		BufferedImage bImage =
-				new BufferedImage(super.compBoundsX, super.compBoundsY, BufferedImage.TYPE_4BYTE_ABGR);
+				new BufferedImage(compBoundsX, compBoundsY, BufferedImage.TYPE_4BYTE_ABGR);
 
 		for(int x = 0; x < bImage.getWidth(); x++)
 		{
 			for(int y = 0; y < bImage.getHeight(); y++)
 			{
-				bImage.setRGB(x, y, 255);
+				bImage.setRGB(x, y, color.getRGB());
 			}
 		}
 

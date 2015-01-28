@@ -18,18 +18,34 @@ public class Container extends DComp
 
 	public void addComponent(DComp newComponent)
 	{
-
+		if (componentArray != null)
+		{
+			DComp[] tempArray = new DComp[componentArray.length + 1];
+			tempArray[tempArray.length - 1] = newComponent;
+			componentArray = tempArray;
+		}
+		else
+		{
+			componentArray = new DComp[]
+			{ newComponent };
+		}
 	}
 
 	@Override
 	public BufferedImage paint()
 	{
 		BufferedImage bImage =
-				new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR);
+				new BufferedImage(compBoundsX, compBoundsY,
+						BufferedImage.TYPE_4BYTE_ABGR);
 
-		for (int x = 0; x < componentArray.length; x++)
+		if (componentArray != null)
 		{
-
+			for (int x = 0; x < componentArray.length; x++)
+			{
+				bImage.createGraphics().drawImage(componentArray[x].paint(),
+						componentArray[x].compLocX, componentArray[x].compLocY,
+						null);
+			}
 		}
 
 		return bImage;

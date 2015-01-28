@@ -5,9 +5,15 @@ import dragonn.resources.logging.LPSCounter;
 
 public class VisThread implements Runnable
 {
-	public static VisPanel vp = new VisPanel();
-	public static VisFrame vf = new VisFrame(vp);
-	public static LPSCounter VisualLoopCounter = new LPSCounter();
+	private VisPanel	vp					= new VisPanel();
+	private VisFrame	vf					= new VisFrame(vp);
+	private LPSCounter	VisualLoopCounter	= new LPSCounter();
+	private int			sleepTimeMillis;
+
+	public VisThread(int sleepTime)
+	{
+		sleepTimeMillis = sleepTime;
+	}
 
 	@Override
 	public void run()
@@ -17,18 +23,20 @@ public class VisThread implements Runnable
 		{
 			try
 			{
-				Thread.sleep(10);
-			}
-			catch(Exception e)
+				Thread.sleep(sleepTimeMillis);
+			} catch (Exception e)
 			{
 				System.out.println("VISUAL INTERRUPTED");
 			}
 			vp.repaint();
 			VisualLoopCounter.tick();
-		}
-		while(GVars.gameRunning == true);
+		} while (GVars.gameRunning == true);
 
 		System.out.println("VISUAL " + this.toString() + "TERMINATED");
 	}
 
+	public int getLPS()
+	{
+		return VisualLoopCounter.getLPSCount();
+	}
 }

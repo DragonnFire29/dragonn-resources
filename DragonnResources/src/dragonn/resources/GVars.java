@@ -6,6 +6,7 @@ import dragonn.resources.gui.Debug;
 import dragonn.resources.gui.VisThread;
 import dragonn.resources.input.InThread;
 import dragonn.resources.logic.LogicThread;
+import dragonn.resources.logic.blocks.SimpleBlock;
 
 public class GVars
 {
@@ -14,15 +15,17 @@ public class GVars
 	// relies on. Unsafe. Fix it.
 	// System
 	public static boolean		gameRunning		= false;
-	private static ManagedFile	configurationPath;
+	public static ManagedFile	engineCFG;
+	public static ManagedFile	gameCFG;
 	public static String		windowTitle		=
 														"DragonnResources: By the power of Greyskull!";
 
 	// Threads
-	public static VisThread		vis				= new VisThread();
-	public static LogicThread	log				= new LogicThread();
-	public static Thread 		visT;
-	public static Thread 		logT;
+	public static VisThread		vis				= new VisThread(0);
+	public static LogicThread	log				= new LogicThread(10,
+														new SimpleBlock());
+	public static Thread		visT;
+	public static Thread		logT;
 
 	// Input
 	public static int			lastScreenX;
@@ -63,7 +66,8 @@ public class GVars
 
 	public static void loadConfiguration()
 	{
-		configurationPath = new ManagedFile("system/config/", "DRCONFIG.CFG");
+		engineCFG = new ManagedFile("system/config/", "ENGINECONFIG.CFG");
+		gameCFG = new ManagedFile("system/config/", "GAMECONFIG.CFG");
 	}
 
 	/**

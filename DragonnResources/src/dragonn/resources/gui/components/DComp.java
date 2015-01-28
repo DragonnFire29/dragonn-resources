@@ -1,9 +1,7 @@
 package dragonn.resources.gui.components;
 
+import java.awt.Color;
 import java.awt.image.BufferedImage;
-
-import dragonn.resources.input.InKeyListener;
-import dragonn.resources.input.InputObj;
 
 public class DComp
 {
@@ -12,6 +10,7 @@ public class DComp
 	protected int			compLocY;
 	protected int			compBoundsX;
 	protected int			compBoundsY;
+	protected Color			color;
 
 	// Mouse info
 	protected boolean		compIsClickable;
@@ -22,6 +21,7 @@ public class DComp
 
 	// Text info
 	protected boolean		compHasText;
+	protected Color			comptextColor;
 	protected String		compText;
 
 	// Interaction info
@@ -33,22 +33,54 @@ public class DComp
 
 	public DComp()
 	{
-		// TODO: Write in the defaults
+		compIsClickable = true;
+		interactionBlocking = DComp.BLOCK_ALL;
+		compLocX = 200;
+		compLocY = 200;
+		compBoundsX = 100;
+		compBoundsY = 100;
+
+		color = Color.black;
+	}
+
+	public DComp(Color compColor)
+	{
+		compIsClickable = true;
+		interactionBlocking = DComp.BLOCK_ALL;
+		compLocX = 200;
+		compLocY = 200;
+		compBoundsX = 100;
+		compBoundsY = 100;
+
+		color = compColor;
 	}
 
 	public DComp(boolean compIsClickable, boolean compHasText,
 			int interactionBlocking, int compLocX, int compLocY,
-			int compBoundsX, int compBoundsY)
+			int compBoundsX, int compBoundsY, Color color)
 	{
 		this.compIsClickable = compIsClickable;
 		this.compHasText = compHasText;
 		this.interactionBlocking = interactionBlocking;
+		this.compLocX = compLocX;
+		this.compLocY = compLocY;
+		this.compBoundsX = compBoundsX;
+		this.compBoundsY = compBoundsY;
+		this.color = color;
 	}
 
 	public BufferedImage paint()
 	{
 		BufferedImage bImage =
 				new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR);
+
+		for (int x = 0; x < bImage.getWidth(); x++)
+		{
+			for (int y = 0; y < bImage.getHeight(); y++)
+			{
+				bImage.setRGB(x, y, color.getRGB());
+			}
+		}
 
 		return bImage;
 	}
@@ -79,17 +111,16 @@ public class DComp
 
 	public boolean onClick()
 	{
+		if(compIsClickable)
+		{
+			System.out.println("Component " + this.toString() + " clicked!");
+		}
 		return false;
-	}
-
-	public boolean isClickable()
-	{
-		return this.compIsClickable;
 	}
 
 	public int getMouseXR()
 	{
-		if (this.isClickable() && this.compMousePresent)
+		if (compIsClickable && this.compMousePresent)
 		{
 			return this.compMouseX;
 		}
@@ -99,7 +130,7 @@ public class DComp
 
 	public int getMouseYR()
 	{
-		if (this.isClickable() && this.compMousePresent)
+		if (compIsClickable && this.compMousePresent)
 		{
 			return this.compMouseY;
 		}
@@ -107,7 +138,7 @@ public class DComp
 		return -1;
 	}
 
-	//Misc getters
+	// Misc getters
 	public int getComponentX()
 	{
 		return compLocX;
@@ -116,5 +147,10 @@ public class DComp
 	public int getComponentY()
 	{
 		return compLocY;
+	}
+
+	public boolean getClickable()
+	{
+		return this.compIsClickable;
 	}
 }
