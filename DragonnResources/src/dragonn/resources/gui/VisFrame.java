@@ -8,6 +8,11 @@ import dragonn.resources.GVars;
 
 public class VisFrame extends JFrame
 {
+	/**
+	 *
+	 */
+	private static final long	serialVersionUID	= 1L;
+
 	public VisFrame(Component comp)
 	{
 		setSize(800, 600);

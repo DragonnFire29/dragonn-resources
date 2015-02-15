@@ -1,7 +1,6 @@
 package dragonn.resources.files;
 
 import java.io.Console;
-import java.io.IOException;
 import java.io.PrintStream;
 import java.text.MessageFormat;
 
@@ -35,7 +34,7 @@ public class DebugStream extends PrintStream
 		}
 		catch(Exception e)
 		{
-			
+
 		}
 	}
 

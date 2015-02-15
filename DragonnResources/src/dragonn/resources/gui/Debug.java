@@ -11,7 +11,7 @@ public class Debug
 {
 	public static boolean	dbgBuilt;
 
-	public static DBGCUSTOM	custDebugInfo	= new DBGCUSTOM();
+	public static DBGCUSTOM	custDebugInfo;
 
 	static void build()
 	{
@@ -75,7 +75,10 @@ public class Debug
 				GVars.lastScreenX, GVars.lastScreenY);
 
 		// Custom
-		custDebugInfo.draw(g);
+		if(custDebugInfo != null)
+		{
+			custDebugInfo.draw(g);
+		}
 
 		// TODO: Remove this when
 		// something starts using input

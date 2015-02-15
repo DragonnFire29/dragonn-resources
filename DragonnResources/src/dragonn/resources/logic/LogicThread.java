@@ -41,4 +41,19 @@ public class LogicThread implements Runnable
 	{
 		return LogicLoopCounter.getLPSCount();
 	}
+
+	public void paintLogic()
+	{
+		startingLogicBlock.paint();
+	}
+
+	public LogicBlock getLogic()
+	{
+		return startingLogicBlock;
+	}
+
+	public void setLogic(LogicBlock newLogicBlock)
+	{
+		startingLogicBlock = newLogicBlock;
+	}
 }

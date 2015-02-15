@@ -34,13 +34,14 @@ public class SimpleBlock implements LogicBlock
 	@Override
 	public void run()
 	{
-		InKeyListener.getNextEvent();
+		lastObj = InKeyListener.getNextEvent();
 	}
 
 	@Override
 	public BufferedImage paint()
 	{
 		BufferedImage bImg = new BufferedImage(displayHeight, displayWidth, BufferedImage.TYPE_4BYTE_ABGR);
+		bImg.createGraphics().drawString(lastObj.getKeyString(), 5, 5);
 		return bImg;
 	}
 

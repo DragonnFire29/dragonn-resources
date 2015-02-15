@@ -13,6 +13,7 @@ public class GVars
 	// TODO: Get an initializer + getters and setters going.
 	// Really, too many public statics that the program
 	// relies on. Unsafe. Fix it.
+
 	// System
 	public static boolean		gameRunning		= false;
 	public static ManagedFile	engineCFG;

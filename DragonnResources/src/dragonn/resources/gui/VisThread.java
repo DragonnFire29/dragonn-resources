@@ -39,4 +39,9 @@ public class VisThread implements Runnable
 	{
 		return VisualLoopCounter.getLPSCount();
 	}
+
+	public void runComponentLogic()
+	{
+		vp.runComponents();
+	}
 }

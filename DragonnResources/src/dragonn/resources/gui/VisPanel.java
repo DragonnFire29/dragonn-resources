@@ -12,12 +12,17 @@ import dragonn.resources.gui.components.DComp;
 @SuppressWarnings("serial")
 public class VisPanel extends JPanel
 {
-	public Color BGC = Color.white;
-	public DComp baseComponent = new Container();
+	public Color	BGC				= Color.white;
+	public DComp	baseComponent;
 
 	public VisPanel()
 	{
 		this.setFocusTraversalKeysEnabled(true);
+		//TODO: This is temporary.
+		baseComponent = new Container(0, 0,500, 500, Color.green);
+		((Container) baseComponent).addComponent(new BasicComponent(450, 450, 100, 100, Color.black));
+		((Container) baseComponent).addComponent(new BasicComponent(300, 300, 100, 100, Color.blue));
+		((Container) baseComponent).addComponent(new BasicComponent(450, 450, 10, 10, Color.red));
 	}
 
 	public VisPanel(DComp component)
@@ -44,12 +49,18 @@ public class VisPanel extends JPanel
 		g.setColor(BGC);
 		g.fillRect(0, 0, 800, 600);
 
-		g.drawImage(baseComponent.paint(), baseComponent.getComponentX(), baseComponent.getComponentY(), null);
+		g.drawImage(baseComponent.paint(), baseComponent.getLocX(),
+				baseComponent.getLocY(), null);
 
-		if(GVars.debugVisible)
+		if (GVars.debugVisible)
 		{
 			Debug.drawDebugInfo(g);
 		}
+	}
+
+	public void runComponents()
+	{
+		baseComponent.update();
 	}
 
 	public DComp getComponent()
